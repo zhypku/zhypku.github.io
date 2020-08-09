@@ -1,0 +1,146 @@
+\resheading{主要项目}
+  \begin{itemize}[leftmargin=*]
+    \item
+      \ressubsingleline{HiveD：多租户GPU集群调度系统}{$\quad$投稿至\textbf{OSDI 2020}~$\cdot$第一作者}{2018.6 -- 2020.7}
+      \vspace{-10pt}\\
+      {\small
+          \textbf{关键词：资源共享，GPU拓扑，开源，落地部署，K8s，Go，Python}
+
+          传统的多租户GPU集群为租户预留一定的GPU数量（quota）作为资源保障。然而深度学习任务的性能与GPU拓扑紧密相关，仅预留quota（数量）无法反映租户应得的资源拓扑，使得租户任务的性能得不到保障，破坏用户在共享集群中的体验。HiveD使用全新的资源抽象，以精确定义每个租户的资源拓扑，并设计了资源的动态分配机制，为租户任务提供拓扑和性能保证。\texttt{\url{https://github.com/microsoft/hivedscheduler}}
+          \vspace{-5pt}
+          \begin{itemize}[leftmargin=*]
+            \item 分析微软内部集群trace，揭示了用quota共享GPU资源带来的异常现象：任务在共享集群中的性能（拓扑）可能比其租户的私有集群中（不共享）更差，或等待时间更长，破坏了资源共享的意义
+            \item 提出cell的抽象，将租户的资源虚拟化为私有集群（数量+拓扑），并设计Buddy Cell Allocation算法以动态分配cell，理论证明了该算法保证了任务在私有集群中的GPU拓扑在共享集群中可以被满足
+            \item 设计多优先级cell分配机制和硬件容错机制，以及和现有调度算法的兼容能力，保证资源利用率和调度效率
+            \item 基于K8s实现调度器，具有组调度（Gang Scheduling）、优先级抢占、容错、重配置等实用特性
+            \item 调度器与微软OpenPAI平台深度整合，在微软内部部署超过8个月，管理多个集群、超过1000块GPU
+            % \item 实验证明HiveD消除了现有深度学习调度器中均存在的共享异常，并能保持其原有的调度效率，提供高利用率
+            % \item 第一作者论文已投稿至OSDI 2020
+          \end{itemize}
+      }
+    \item
+      \ressubsingleline{DShuttle：训练数据存储与调度系统}{$\quad$论文准备中~$\cdot$第一作者}{2019.12 -- 2020.7}
+      \vspace{-10pt}\\
+      {\small
+          \textbf{关键词：缓存策略，性能建模，优化算法，Alluxio}
+
+          云上训练平台往往采取计算与存储相分离的设计，而由于数据规模和训练速度的提升，计算和存储集群间有限的网络带宽逐渐成为性能瓶颈。DShuttle为云上训练场景设计了新型的数据缓存策略，并利用深度学习的任务特点对其性能进行建模，从而对缓存、带宽分配以及任务调度进行联合优化，提升任务性能和资源利用率。
+          \vspace{-5pt}
+          \begin{itemize}[leftmargin=*]
+            \item 设计“均匀缓存”策略，结合深度学习任务均匀、反复、随机的数据访问特点，解决了传统策略的缓存失效（如LRU）、带宽浪费（如Belady-MIN）等问题
+            \item 利用均匀缓存下的均匀带宽开销和深度学习的执行稳定性，建立任务性能关于其缓存、带宽分配的预测模型
+            \item 利用性能模型，建模出缓存、带宽分配和任务调度的联合最优化问题，并设计启发式优化算法
+            \item 基于Alluxio实现的原型系统已初步在微软内部集群部署
+            % \item 第一作者论文撰写中，计划投稿至ASPLOS 2021
+          \end{itemize}
+      }
+    \item
+      \ressubsingleline{SDPaxos：半分散式状态机副本协议}{$\quad$\textbf{SoCC 2018}~$\cdot$第一作者}{2016.10 -- 2017.5}
+      \vspace{-10pt}\\
+      {\small
+          \textbf{关键词：分布式一致性，Paxos，跨地域副本，Go，开源}
+
+          SDPaxos是一种为跨地域副本设计的一致性协议。它采用“半分散式”设计，将指令的复制分散化，而将指令的排序中心化，同时解决了传统的纯中心或纯分散式设计带来的性能问题。\texttt{\url{https://github.com/zhypku/SDPaxos}}
+          \vspace{-5pt}
+          \begin{itemize}[leftmargin=*]
+            \item 观察到中心式协议（如Multi-Paxos，Raft）的负载不均衡问题，以及分散式协议（如Mencius，EPaxos）由额外的分布式协调开销产生的性能下降问题，提出“半分散式”设计，同时解决二者的性能问题
+            \item 将指令的复制和排序分离为两个独立的Paxos流程，将两阶段并行化实现1轮延迟，理论证明协议的正确性
+            \item 部署在EC2上的实验证明SDPaxos相比中心式协议提升性能6倍，相比分散式协议提升性能1.7倍
+          \end{itemize}
+      }
+        %   图神经网络(Graph Neural Network, GNN)具有对图节点之间依赖关系进行建模的强大功能，使得与图相关的研究领域取得了重大突破。由于图数据具有规模大、稀疏不规则的特性，GNN超出了现有深度学习系统和图计算系统的设计，并导致在GPU上计算的scalability和efficiency的问题。
+        %   NeuGraph是面向大规模图神经网络的计算框架，它构建于现有深度学习系统(如TensorFlow)之上，解决了GNN的scalability和efficiency的问题。
+%               \item SAGA-NN编程模型：以顶点为中心的数据流编程接口，让用户通过“像顶点一样思考”的方式来编写模型，使模型表达更加自然；其对图信息的描述为高效处理大图数据提供了可能
+%               \item 通过“图感知”的SAGA-NN到子图粒度数据流图的翻译，和流式的子图粒度执行机制，解决scalability问题
+%               \item 通过高性能图传播操作的GPU kernel以及kernel fusion机制，解决efficiency问题
+%               \item 通过chain模式的多GPU流式执行机制，解决多GPU在PCIe switch上的带宽瓶颈问题
+%               \item NeuGraph与现有深度学习系统兼容，可自动将SAGA-NN程序翻译为现有深度学习系统可执行的数据流图
+% %              \item NeuGraph在可放入GPU显存的小数据集上比TensorFlow最高快5$\times$，比DGL最高快19$\times$；并可利用GPU直接处理大于GPU显存的大规模图数据集，单卡比TensorFlow-CPU最高快47$\times$，并在多GPU上取得线性扩展性
+%               \item NeuGraph在可放入GPU显存的小数据集上比TensorFlow最高快5$\times$；并可利用GPU直接处理大于GPU显存的大规模图数据集，单GPU比TensorFlow-CPU最高快47$\times$，并在多GPU上取得线性扩展性
+%               \item 项目被新智元、机器之心等人工智能媒体报导; 项目在2018微软人工智能大会(Microsoft AI Innovate)和2018中国计算机大会(CNCC)进行了展示
+%     \item
+%     \ressubsingleline{Garaph}{CPU-GPU异构图计算系统$\cdot$发表于\textbf{USENIX ATC'17}$\cdot$第一作者}{2016.03 -- 2017.03}
+%     \vspace{-10pt}\\
+%     {\small
+%         近年来，加速器和存储设备的快速发展为高效地在单个节点上处理大规模图数据提供了可能，而图数据的稀疏不规则特性使得在CPU/GPU上的图计算会产生线程冲突、随机访存、负载不均衡等问题。本项目提出Garaph，一个面向CPU/GPU异构环境的大规模图计算系统，支持CPU和多GPU协同对大规模图数据进行高效处理。
+%         \vspace{-5pt}
+%         \begin{itemize}[leftmargin=*]
+%             \item GPU图计算模块：通过保证显存的coalescing memory access提升显存访问速度，提出replication的策略解决GPU线程计算冲突和存储体冲突问题
+%             \item CPU图计算模块：基于边的平衡切分策略使得CPU端各个线程达到无锁计算和负载均衡，并针对不同图计算应用特性(例如：带有激活顶点特性的最短路算法)综合切换双计算模式
+%             \item CPU-GPU动态调度策略：综合考虑任务特征和CPU/GPU的计算特征设计了动态任务调度策略
+%             \item 对比基于CPU和基于GPU的大规模图计算系统，Garaph比它们之中最快的系统最高快5.36$\times$
+%             \item NASAC'17受邀报告
+%         \end{itemize}
+%     }
+%     \item
+% %    \ressubsingleline{DL Compiler}{深度学习Inference编译器$\cdot$在投论文$\cdot$第一作者}{2018.10 -- 今}
+%     \ressubsingleline{DL Compiler}{深度学习Inference编译器$\cdot$进行中工作$\cdot$第一作者}{2018.10 -- 今}
+%     \vspace{-10pt}\\
+%     {\small
+%         现有深度学习框架（如TensorFlow）在inference场景中会存在很高且不稳定的latency。我们针对该问题，设计了一个编译器，通过数据流图层面的计算优化取得低且稳定的latency，在多个CNN/RNN模型上进行实验，与TensorFlow和TensorRT对比取得加速。
+% %        \vspace{-5pt}
+% %        \begin{itemize}[leftmargin=*]
+% %            \item 
+% %        \end{itemize}
+%     }
+%     \item
+%     \ressubsingleline{SeerNet}{稀疏卷积计算$\cdot$发表于\textbf{CVPR'19}$\cdot$第二作者}{2018.10 -- 2018.11}
+%     \vspace{-10pt}\\
+%     {\small 
+%          SeerNet关注卷积神经网络中输出特征图的稀疏性，例如，经过ReLU或Max-pooling层后，卷积层的大部分输出被置为零或丢弃。如果跳过这部分对应的先导卷积计算，则可以大大减少卷积层的计算量。
+%          \vspace{-5pt}
+%          \begin{itemize}[leftmargin=*]
+%              \item 利用低精度模型以极低的代价预测输出特征的稀疏性，然后通过稀疏的原精度计算加速原神经网络计算
+%              \item SeerNet可以直接应用于预训练好的模型中，无需对原始模型做任何修改或重训练
+%              \item SeerNet充分利用了现有硬件(如CPU、GPU)对混合精度计算的支持
+%              \item 基于CPU的实现在卷积层上取得了最高5.79$\times$的加速，并在端到端的模型推理取得1.2$\times$$\sim$1.4$\times$的加速
+%          \end{itemize}
+    % }
+  \end{itemize}
+
+
+
+%\resheading{项目经历}
+%\begin{itemize}[leftmargin=*]
+%    \item
+%    \ressubsingleline{NeuGraph (NGra)}{图神经网络计算系统$\cdot$发表于\textbf{USENIX ATC'19}$\cdot$第一作者}{2017.12 -- 今}
+%    {\small
+%        \begin{description}[font=\textbf, labelindent=1em, leftmargin=5em, style=sameline]  \itemsep -2pt 
+%            \item[\labelitemii \hspace{1pt} 简介] NeuGraph (NGra)是面向大规模图神经网络(Graph Neural Network, GNN)的计算框架，它构建于现有基于数据流图的深度学习系统之上，解决了GNN的图结构带来的scalability和efficiency的问题
+%            \item[\labelitemii \hspace{1pt} 技术] 结合顶点编程和数据流编程的SAGA-NN编程抽象; SAGA-NN模型到数据流图的翻译; 单GPU/多GPU的流式执行机制; GPU的高性能图传播操作和内核融合机制
+%            %    \item[\labelitemii \hspace{1pt} 贡献] 提出副本机制的核心设计以及主要系统设计；实现了系统的主框架，包括CPU/GPU执行内核、任务调度、内存和磁盘管理、容错等核心模块
+%            \item[\labelitemii \hspace{1pt} 成果] USENIX ATC'19论文[1]; 被新智元、机器之心等人工智能媒体报导; 项目在2018微软人工智能大会(Microsoft AI Innovate)和2018中国计算机大会(CNCC)进行了展示
+%        \end{description}
+%    }
+%    \item
+%    \ressubsingleline{Garaph}{CPU-GPU异构图计算系统$\cdot$发表于\textbf{USENIX ATC'17}$\cdot$第一作者}{2016.03 -- 2017.03}
+%    {\small
+%        \begin{description}[font=\textbf, labelindent=1em, leftmargin=5em, style=sameline]  \itemsep -2pt 
+%            \item[\labelitemii \hspace{1pt} 简介] Garaph是一个面向CPU/GPU异构环境的图计算系统，支持CPU和多GPU协同对大规模图数据进行高效处理
+%            \item[\labelitemii \hspace{1pt} 技术] 解决GPU线程冲突的自动副本机制; 解决CPU负载均衡和线程冲突的副本机制; CPU/GPU之间的动态任务调度
+%            %    \item[\labelitemii \hspace{1pt} 贡献] 提出副本机制的核心设计以及主要系统设计；实现了系统的主框架，包括CPU/GPU执行内核、任务调度、内存和磁盘管理、容错等核心模块
+%            \item[\labelitemii \hspace{1pt} 成果] USENIX ATC'17论文[2]; 专利[1]; NASAC'17受邀报告
+%        \end{description}
+%    }
+%    \item
+%    %    \ressubsingleline{DL Compiler}{深度学习Inference编译器$\cdot$在投论文$\cdot$第一作者}{2018.10 -- 今}
+%    \ressubsingleline{DL Compiler}{深度学习Inference编译器$\cdot$投稿SOSP'19在审$\cdot$第一作者}{2018.10 -- 今}
+%    {\small
+%        \begin{description}[font=\textbf, labelindent=1em, leftmargin=5em, style=sameline]  \itemsep -2pt 
+%            %            \item[\labelitemii \hspace{1pt} 简介] 现有深度学习框架在inference场景中，由于粗粒度的操作符和设备抽象以及数据流图的动态调度执行，导致了很高且不稳定的latency。我们针对该问题，设计了一个编译器
+%            \item[\labelitemii \hspace{1pt} 简介] 现有深度学习框架（如TensorFlow）在inference场景中会导致很高且不稳定的latency。我们针对该问题，设计了一个编译器
+%            %            \item[\labelitemii \hspace{1pt} 技术] 
+%            %    \item[\labelitemii \hspace{1pt} 贡献] 提出副本机制的核心设计以及主要系统设计；实现了系统的主框架，包括CPU/GPU执行内核、任务调度、内存和磁盘管理、容错等核心模块
+%            %            \item[\labelitemii \hspace{1pt} 成果] 在投论文%; 成果应用于微软产品
+%        \end{description}
+%    }
+%    \item
+%    \ressubsingleline{SeerNet}{稀疏卷积计算$\cdot$发表于\textbf{CVPR'19}$\cdot$第二作者}{2018.10 -- 2018.11}
+%    {\small
+%        \begin{description}[font=\textbf, labelindent=1em, leftmargin=5em, style=sameline]  \itemsep -2pt 
+%            \item[\labelitemii \hspace{1pt} 简介] SeerNet关注卷积神经网络中输出特征图的稀疏性，例如，经过ReLU或Max-pooling层后，卷积层的大部分输出被置为零或丢弃。如果跳过这部分对应的先导卷积计算，则可以大大减少卷积层的计算量
+%            \item[\labelitemii \hspace{1pt} 技术] 利用低精度模型以极低的代价预测输出特征的稀疏性，通过稀疏的原精度计算加速原神经网络计算；可以直接应用于预训练好的模型中而无需对原始模型做任何修改或重训练
+%            \item[\labelitemii \hspace{1pt} 成果] CVPR'19论文[3];
+%        \end{description}
+%    }
+%\end{itemize}
