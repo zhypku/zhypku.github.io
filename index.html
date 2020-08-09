@@ -24,9 +24,11 @@
 				<nav id="nav">
 					<ul>
 						<li><a href="#about" class="active">ABOUT</a></li>
-						<li><a href="#education">EDUCATION</a></li>
-						<li><a href="#experience">EXPERIENCE</a></li>
-						<li><a href="#four">Contact</a></li>
+						<li><a href="#experience">EDUCATION&EXPERIENCES</a></li>
+						<li><a href="#projects">PROJECTS</a></li>
+						<li><a href="#publications">PUBLICATIONS</a></li>
+						<li><a href="#talks">TALKS&ARTICLES</a></li>
+						<li><a href="#life">LIFE</a></li>
 					</ul>
 				</nav>
 				<footer>
@@ -58,25 +60,23 @@
 										<!-- <p>About Me</p> -->
 									</header>
 									<!-- <p>Faucibus sed lobortis aliquam lorem blandit. Lorem eu nunc metus col. Commodo id in arcu ante lorem ipsum sed accumsan erat praesent faucibus commodo ac mi lacus. Adipiscing mi ac commodo. Vis aliquet tortor ultricies non ante erat nunc integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum.</p> -->
-									<p>I am Hanyu Zhao (赵汉宇), a 4th-year Ph.D. candidate at the <a href="http://net.pku.edu.cn/p2p/" target="_blank">Distributed Systems Lab</a> of <a href="https://www.pku.edu.cn" target="_blank">Peking University</a>, supervised by Prof. Yafei Dai and <a href="http://net.pku.edu.cn/~yangzhi/" target="_blank">Prof. Zhi Yang</a>.<br />
-									My research interests are in <i>distributed systems</i>, <i> cloud computing</i>, and <i>systems for machine learning</i>. My recent focus is on cluster-scale machine learning systems, and the classic distributed-systems challenges in this new context, e.g., resource scheduling, data storage. I also study distributed consensus protocols and data consistency.<br />
+									<p>I am Hanyu Zhao (赵汉宇), a 5th-year Ph.D. candidate at the <a href="http://net.pku.edu.cn/p2p/" target="_blank">Distributed Systems Lab</a> of <a href="https://www.pku.edu.cn" target="_blank">Peking University</a>, supervised by Prof. Yafei Dai and <a href="http://net.pku.edu.cn/~yangzhi/" target="_blank">Prof. Zhi Yang</a>. I earned my B.E. degree from <a href="http://cs.whu.edu.cn" target="_blank">Computer School</a>, <a href="https://www.whu.edu.cn">Wuhan University</a> in 2012.<br />
+									My research interests are in <i>distributed systems</i>, <i> cloud computing</i>, and <i>systems for machine learning</i>. My recent focus is on building <i>cluster-scale</i> machine learning systems, with a particular attention to the classic distributed systems challenges in this new context, e.g., resource scheduling, data storage. I also study distributed consensus and consistency protocols.<br />
 									<!-- Over the past ~3 years I've been working at the <a href="https://www.microsoft.com/en-us/research/group/systems-and-networking-research-group-asia/" target="_blank">Systems Research Group</a> as a research intern, where I worked with many brilliant people and on a series of exciting projects on cluster scheduling for machine learning. Some of the results have been transferred into real Microsoft platforms.</p> -->
-									In my leisure life I like workout (jogging/climbing/gym), taking photos (the banner is a recent one), and singing songs. Join me if interested! I used to be a member of the <a href="https://www.weibo.com/whudebate" target="_blank">Debate Team of Wuhan University</a>, one of the best Mandarin debate teams in the world :)<br />
-								    <b>I am in the job market now. Curriculum vitae (<a href="files/resume.pdf">中文简历</a>).</b></p>
+								    <b>I am in the job market now. Curriculum vitae (<a href="files/resume.pdf" target="_blank">中文简历</a>).</b></p>
 								</div>
 							</section>
 
-							<section id="education">
+							<section id="experience">
 								<div class="container">
-									<h3>Education</h3>
-									<!-- <p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p> -->
+									<h3>Education & Experiences</h3>
 									<div class="features">
 										<article>
 											<a class="image"><img src="images/pku.png" alt="" /></a>
 											<div class="inner">
 												<h4>Ph.D. candidate @ <a href="https://www.pku.edu.cn" target="_blank">Peking University</a></h4>
 												<ul>
-													<li><b>Sept. 2016 - Jul. 2021 (expected)</b></li>
+													<li><b>Sept. 2016 - Present (Jul. 2021 expected)</b></li>
 													<li>Supervisors: Prof. Yafei Dai, <a href="http://net.pku.edu.cn/~yangzhi/" target="_blank">Prof. Zhi Yang</a></li>
 													<li><a href="http://net.pku.edu.cn/p2p/" target="_blank">Distributed Systems Lab</a>, <a href="https://eecs.pku.edu.cn" target="_blank">School of Electronic Engineering and Computer Science</a></li>
 												</ul>
@@ -92,14 +92,6 @@
 												</ul>
 											</div>
 										</article>
-									</div>
-								</div>
-							</section>
-
-							<section id="experience">
-								<div class="container">
-									<h3>Experience</h3>
-									<div class="features">
 										<article>
 											<a class="image"><img src="images/msra.png" alt="" /></a>
 											<div class="inner">
@@ -115,7 +107,132 @@
 								</div>
 							</section>
 
-							<section id="two">
+							<section id="projects">
+								<div class="container">
+									<h3>Projects (Selected)</h3>
+									<div class="features">
+										<article>
+											<h4>HiveD: Multi-Tenant GPU Cluster Scheduling for Deep Learning</h4>
+											<h5>Jun. 2018 - Jun. 2020</h5>
+											<p>Traditional multi-tenant clusters reserve resource for each tenant in terms of <i>quota</i>, i.e., the <i>number</i> of GPUs, which implies a promised amount of available resource. This approach fails for deep learning workloads, where users require not only the number, but also the <i>affinity</i> of the GPUs, which quota cannot capture. It is possible, and will hurt user experience that a tenant cannot run a single job with sufficient quota, due to affinity constraints.<br />
+											HiveD <i>explicitly reserves GPU affinity</i> for tenants, and allocates resources dynamically with a theoretic <i>guarantee</i> that every tenant can always access the deserved affinity that it owns, thus providing guaranteed and predictable resource sharing experience.<br />
+										    <i>The system has been <a href="https://github.com/microsoft/hivedscheduler" target="_blank">released open source</a> and deployed at Microsoft!</i></p>
+											<ul>
+												<!-- <li>Trace analysis of Microsoft clusters to reveal the problems of traditional quota reservation</li> -->
+												<li>New resource abstraction <i>Cell</i> for defining the affinity share of a tenant, and <i>Buddy Cell Allocation</i> algorithm for dynamic allocation with guaranteed access to everyone's own affinity</li>
+												<li>Mechanisms for improving efficiency: job priorities, compatibility with state-of-the-art scheduling policies, and bad hardware tolerance</li>
+												<li>K8s-based implementation with a series of practical features, e.g., gang scheduling, preemption, fault-tolerance, reconfiguration</li>
+											</ul>
+										</article>
+										<article>
+											<h4>DShuttle: Training Data Management and Scheduling for Deep Learning Clusters</h4>
+											<h5>Dec. 2019 - Jul. 2020 (Research paper in preparation)</h5>
+											<p>Decoupled compute and storage is a common practice in cloud computing. However, due to the increasingly large datasets and high training throughput, the limited and non-scalable bandwidth between the local GPU cluster and the remote storage cluster is becoming a bottleneck, limiting training performance and resource utilization.<br />
+											DShuttle exploits the unique <i>data access uniformity</i> and <i>performance predictability</i> of deep learning workloads, to perform smart data caching, and cache-bandwidth-job co-scheduling, to serve data efficiently to the jobs and hence to improve performance and utilization.</p>
+											<ul>
+												<li>New caching policy <i>Uniform Caching</i> which leverages the uniform, repetitive, and random data access of deep learning jobs, and avoids the caching thrashing of conventional LRU-like policies</li>
+												<li>Resource-performance model to predict job performance given available cache space and remote bandwidth, based on the caching policy and job execution pattern</li>
+												<li>Dynamic cache-bandwidth joint allocation and data-job co-scheduling, by exploiting the performance model</li>
+											</ul>
+										</article>
+										<article>
+											<h4>SDPaxos: Semi-Decentralized Wide-Area State Machine Replication</h4>
+											<h5>Oct. 2016 - May 2017</h5>
+											<p>We observe sub-optimal performance for existing state machine replication protocols: traditional centralized protocols suffer from single-point bottleneck, while purely decentralized protocols suffer performance degradation due to extra coordination overhead in some undesired but common cases.<br />
+											SDPaxos adopts a hybrid architecture to overcome the limits and inherit the advantages of both the schemes at the same time. SDPaxos decentralizes replication, the heavyweight part, to balance the load, and centralizes ordering, the lightweight part, to eliminate extra coordination overhead.</p>
+											<ul>
+												<li>Semi-decentralized replication scheme which uses two separated Paxos phases to handle operation replication and ordering respectively</li>
+												<li>Techniques to overlap the two phases to achieve the optimal 1-round-trip latency</li>
+											</ul>
+										</article>
+									</div>
+								</div>
+							</section>
+
+							<section id="publications">
+								<div class="container">
+									<h3>Publications</h3>
+									<h4>First-author publications</h4>
+									<ul>
+										<li>
+											<b>SDPaxos: Building Efficient Semi-Decentralized Geo-replicated State Machines</b><br />
+											<i><b>Hanyu Zhao</b>, Quanlu Zhang, Zhi Yang, Ming Wu, Yafei Dai</i><br />
+											In Proceedings of the ACM Symposium on Cloud Computing 2018 (<b>SoCC '18</b>)<br />
+											[<a href="https://dl.acm.org/doi/10.1145/3267809.3267837" target="_blank">Paper</a>] [<a href="https://acmsocc.github.io/2018/slides/socc18-slides-zhao.pdf" target="_blank">Slides</a>] [<a href="https://github.com/zhypku/SDPaxos" target="_blank">Code</a>]
+										</li>
+										<li>
+											<b>Anonymous first-author submission to OSDI '20</b>
+										</li>
+										<!-- <li>
+											<b>HiveD: Sharing a GPU Cluster for Deep Learning with Guarantees</b><br />
+											<i><b>Hanyu Zhao</b>, Zhenhua Han, Zhi Yang, Quanlu Zhang, Fan Yang, Lidong Zhou, Mao Yang, Francis C.M. Lau, Yuqi Wang, Yifan Xiong, Bin Wang</i><br />
+											To appear at the 14th USENIX Symposium on Operating Systems Design and Implementation (OSDI '20)
+										</li> -->
+									</ul>
+									<h4>Co-author publications</h4>
+									<ul>
+										<li>
+											<b>Don't Miss Any Piece of Knowledge: In-Network Mutual Learning with Sketch Side Branches</b> (Preprint)<br />
+											<i>Yunteng Luan, <b>Hanyu Zhao</b>, Zhi Yang, Yafei Dai</i><br />
+											arXiv:1911.09418
+										</li>
+										<li>
+											<b>ScheD2: Scheduling Deep Learning Training via Deep Reinforcement Learning</b><br />
+											<i>Yunteng Luan, Xukun Chen, <b>Hanyu Zhao</b>, Zhi Yang, Yafei Dai</i><br />
+											In Proceedings of the IEEE Global Communications Conference 2019 (<b>GlobeCom '19</b>)
+										</li>
+										<li>
+											<b>Gandiva: Introspective Cluster Scheduling for Deep Learning</b> <br />
+											<i>Wencong Xiao, Romil Bhardwaj, Ramachandran Ramjee, Muthian Sivathanu, Nipun Kwatra, Zhenhua Han, Pratyush Patel, Xuan Peng, <b>Hanyu Zhao</b>, Quanlu Zhang, Fan Yang, Lidong Zhou</i><br />
+											In Proceedings of the 13th USENIX Symposium on Operating Systems Design and Implementation (<b>OSDI '18</b>)
+										</li>
+										<li>
+											<b>Scheduling CPU for GPU-based Deep Learning Jobs</b> (Poster)<br />
+											<i>Wencong Xiao, Zhenhua Han, <b>Hanyu Zhao</b>, Xuan Peng, Quanlu Zhang, Fan Yang</i><br />
+											In Proceedings of the ACM Symposium on Cloud Computing 2018 (<b>SoCC '18 Poster</b>)
+										</li>
+										<li>
+											<b>Building Efficient and Available Distributed Transaction with Paxos-based Coding Consensus</b>
+											<i>Shenglong Li, Quanlu Zhang, Zhi Yang, <b>Hanyu Zhao</b>, Yafei Dai</i><br />
+											In Proceedings of the IEEE INFOCOM WKSHPS DCPerf 2018
+										</li>
+									</ul>
+								</div>
+							</section>
+
+							<section id="talks">
+								<div class="container">
+									<h3>Invited Talks and Articles</h3>
+									<ul>
+										<li>
+											<b>HiveD: Sharing a GPU Cluster for Deep Learning with Guarantees</b><br />
+											Talk at Institute of Network Computing and Information Systems Forum (Rank 1st), Peking University, Dec. 2019
+										</li>
+										<li>
+											<b>SDPaxos: Building Efficient Semi-Decentralized Geo-replicated State Machines</b><br />
+											Talk at PolarDB team, Alibaba Inc., Oct. 2018
+										</li>
+										<li>
+											<b>SDPaxos: Building Efficient Semi-Decentralized Geo-replicated State Machines</b><br />
+											Talk at the ACM Symposium on Cloud Computing 2018 (SoCC '18), Oct. 2018
+										</li>
+										<li>
+											<b><a href="https://mp.weixin.qq.com/s/4P2p5uNqBL5xnH_aqpmbxQ" target="_blank">SoCC 2018：更大的云，更快的计算</a></b><br />
+											Invited article by MSRA (in Chinese), Oct. 2018
+										</li>
+									</ul>
+								</div>
+							</section>
+
+							<section id="life">
+								<div class="container">
+									<h3>Life</h3>
+									<p>In my leisure time, I like various types of workout (gym/jogging/climbing/swimming/...), through which I managed to lose 25kg of weight and say goodbye to my old days of being a fatty. I also enjoy taking photos (the banner is a recent one); watching car shows (I love Porsche and BMW M Power, dreaming of having one some day); singing songs, etc. Join me if interested!<br />
+									I used to be a member of the <a href="https://www.weibo.com/whudebate" target="_blank">Debate Team of Wuhan University</a>, one of the best Mandarin debate teams in the world :)</p>
+								</div>
+							</section>
+
+							<!-- <section id="two">
 								<div class="container">
 									<h3>Things I Can Do</h3>
 									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer lorem ipsum dolor sit amet.</p>
@@ -128,10 +245,9 @@
 										<li class="icon solid fa-users">Shadow clone technique</li>
 									</ul>
 								</div>
-							</section>
+							</section> -->
 
-						<!-- Four -->
-							<section id="four">
+							<!-- <section id="four">
 								<div class="container">
 									<h3>Contact Me</h3>
 									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
@@ -150,7 +266,7 @@
 										</div>
 									</form>
 								</div>
-							</section>
+							</section> -->
 
 						<!-- Five -->
 						<!--
