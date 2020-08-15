@@ -112,11 +112,11 @@
 									<h3>Projects (Selected)</h3>
 									<div class="features">
 										<article>
-											<h4>HiveD: Multi-Tenant GPU Cluster Scheduling for Deep Learning</h4>
-											<h5>Jun. 2018 - Jun. 2020 (<i>Research paper under review</i>)</h5>
+											<h4>HiveD: Multi-Tenant GPU Cluster Scheduling for Deep Learning (<i>OSDI '20</i>)</h4>
+											<h5>Jun. 2018 - Jun. 2020</h5>
 											<p>Traditional multi-tenant clusters reserve resource for each tenant in terms of <i>quota</i>, the <i>number</i> of GPUs, which implies a promised amount of available resource. This approach fails for deep learning workloads, where users require not only the number, but also the <i>affinity</i> of the GPUs, which quota cannot capture. It is possible, and will hurt user experience that a tenant with sufficient quota cannot run a single job due to affinity constraint, or run way slower than it deserves.<br />
 											HiveD <i>explicitly reserves GPU affinity</i> for tenants, and allocates GPUs dynamically with a proven <i>guarantee</i> that every tenant can always access the deserved affinity it owns, thereby providing guaranteed and predictable resource sharing experience.<br />
-										    <i>The system has been deployed at Microsoft and <a href="https://github.com/microsoft/hivedscheduler" target="_blank">released open source (try it out!)</a>.</i></p>
+										    <i>The system has been deployed at Microsoft and <a href="https://github.com/microsoft/hivedscheduler" target="_blank">released open source (have a try!)</a>.</i></p>
 											<ul>
 												<!-- <li>Trace analysis of Microsoft clusters to reveal the problems of traditional quota reservation</li> -->
 												<li>New resource abstraction <i>Cell</i> for defining the affinity share of a tenant, and <i>Buddy Cell Allocation</i> algorithm for dynamic allocation with guaranteed access to everyone's own affinity</li>
@@ -156,19 +156,17 @@
 									<h4>First-author publications</h4>
 									<ul>
 										<li>
+											<b>HiveD: Sharing a GPU Cluster for Deep Learning with Guarantees</b><br />
+											<i><b>Hanyu Zhao</b>, Zhenhua Han, Zhi Yang, Quanlu Zhang, Fan Yang, Lidong Zhou, Mao Yang, Francis C.M. Lau, Yuqi Wang, Yifan Xiong, Bin Wang</i><br />
+											To appear at the 14th USENIX Symposium on Operating Systems Design and Implementation (<b>OSDI '20</b>)<br />
+											[<a href="https://github.com/microsoft/hivedscheduler" target="_blank">Code</a>]
+										</li>
+										<li>
 											<b>SDPaxos: Building Efficient Semi-Decentralized Geo-replicated State Machines</b><br />
 											<i><b>Hanyu Zhao</b>, Quanlu Zhang, Zhi Yang, Ming Wu, Yafei Dai</i><br />
 											In Proceedings of the ACM Symposium on Cloud Computing 2018 (<b>SoCC '18</b>)<br />
 											[<a href="https://dl.acm.org/doi/10.1145/3267809.3267837" target="_blank">Paper</a>] [<a href="https://acmsocc.github.io/2018/slides/socc18-slides-zhao.pdf" target="_blank">Slides</a>] [<a href="https://github.com/zhypku/SDPaxos" target="_blank">Code</a>]
 										</li>
-										<li>
-											<b>Anonymous first-author submission to OSDI '20</b>
-										</li>
-										<!-- <li>
-											<b>HiveD: Sharing a GPU Cluster for Deep Learning with Guarantees</b><br />
-											<i><b>Hanyu Zhao</b>, Zhenhua Han, Zhi Yang, Quanlu Zhang, Fan Yang, Lidong Zhou, Mao Yang, Francis C.M. Lau, Yuqi Wang, Yifan Xiong, Bin Wang</i><br />
-											To appear at the 14th USENIX Symposium on Operating Systems Design and Implementation (OSDI '20)
-										</li> -->
 										<!-- <li>
 											<b>Planned first-author submission to FAST '20</b>
 										</li> -->
