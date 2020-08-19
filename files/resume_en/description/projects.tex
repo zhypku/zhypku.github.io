@@ -1,0 +1,46 @@
+\resheading{Projects (Selected)}
+  \begin{itemize}[leftmargin=*]
+    \item
+      \ressubsingleline{HiveD: Multi-Tenant GPU Cluster Scheduling}{$\quad$\textbf{OSDI '20} (first-author)}{2018.6 -- 2020.7}
+      \vspace{-10pt}\\
+      {
+          HiveD is the first scheduling framework that explicitly reserves GPU \textit{affinity} for tenants, to eliminate unexpected anomalies in traditional systems that only reserve GPU \textit{number} (quota), thereby providing guaranteed resource sharing experiences. \texttt{\url{https://github.com/microsoft/hivedscheduler}}
+
+          \vspace{-5pt}
+          \begin{itemize}[leftmargin=*]
+            \item Analysis of Microsoft clusters showing the anomaly of quota-based systems: worse performance (affinity) in the shared cluster than in a private cluster, damaging the incentive of sharing resources
+            \item New resource abstraction Cell for defining the affinity share of a tenant, and Buddy Cell Allocation algorithm for dynamic allocation with guaranteed access to everyone's own affinity
+            \item Job priorities, compatibility with state-of-the-art scheduling policies, bad hardware tolerance
+            \item Open-source K8s-based implementation, and real deployment at Microsoft, managing 1000+ GPUs
+          \end{itemize}
+      }
+    \item
+      \ressubsingleline{Training Data Scheduling for Deep Learning}{$\quad$Paper in prep. (first-author)}{2019.12 -- 2020.7}
+      \vspace{-10pt}\\
+      {
+
+          Decoupled compute and storage is a common practice in cloud computing.
+          We treat the provisioning of training data from remote storage as a new dimension of cluster scheduling, by exploiting the unique characteristics of DL workloads, to improve job performance and cluster utilization.
+          \vspace{-5pt}
+          \begin{itemize}[leftmargin=*]
+            \item New caching policy Uniform Caching leveraging DL's uniform data access to minimize cache miss
+            \item Resource-performance model derived from Uniform Caching and DL's execution pattern, to estimate job performance given available cache space and remote-local bandwidth
+            \item Dynamic cache-bandwidth joint allocation to jobs in a cluster, and data-job co-scheduling, by exploiting the performance model, to optimize performance and utilization
+          \end{itemize}
+      }
+    \item
+      \ressubsingleline{SDPaxos: Semi-Decentralized State Machine Replication}{$\quad$\textbf{SoCC '18} (first-author)}{}
+      \ressubsingleline{}{}{2016.10 -- 2017.5}
+      \vspace{-10pt}\\
+      {
+
+          SDPaxos is a new replication protocol that adopts a hybrid architecture which decentralizes operation replication, and centralizes operation ordering, to overcome the limitations and inherit the advantages of existing purely centralized or decentralized protocols. \texttt{\url{https://github.com/zhypku/SDPaxos}}
+
+          \vspace{-5pt}
+          \begin{itemize}[leftmargin=*]
+            \item Semi-decentralized replication scheme, which separates replication and ordering into two Paxos phases
+            \item Techniques to coordinate the two Paxos phases to achieve the optimal 1-round-trip latency under realistic configurations, with proven consistency and linearizability
+            \item Up to 6$\times$ throughput of centralized protocols, and 1.7$\times$ throughput of decentralized protocols
+          \end{itemize}
+      }
+  \end{itemize}
