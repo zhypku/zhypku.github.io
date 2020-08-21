@@ -76,7 +76,7 @@
 											<div class="inner">
 												<h4>Ph.D. candidate @ <a href="https://www.pku.edu.cn" target="_blank">Peking University</a></h4>
 												<ul>
-													<li><b>Sept. 2016 - Present (Jul. 2021 expected)</b></li>
+													<li><b>Sept. 2016 - Present (Jun. 2021 expected)</b></li>
 													<li>Supervisors: Prof. Yafei Dai, <a href="http://net.pku.edu.cn/~yangzhi/" target="_blank">Prof. Zhi Yang</a></li>
 													<li><a href="http://net.pku.edu.cn/p2p/" target="_blank">Distributed Systems Lab</a>, <a href="https://eecs.pku.edu.cn" target="_blank">School of Electronic Engineering and Computer Science</a></li>
 												</ul>
@@ -87,7 +87,7 @@
 											<div class="inner">
 												<h4>B.Eng. @ <a href="https://www.whu.edu.cn" target="_blank">Wuhan University</a> </h4>
 												<ul>
-													<li><b>Sept. 2012 - Jul. 2016</b></li>
+													<li><b>Sept. 2012 - Jun. 2016</b></li>
 													<li><a href="http://cs.whu.edu.cn" target="_blank">Computer School</a></li>
 												</ul>
 											</div>
@@ -113,9 +113,9 @@
 									<div class="features">
 										<article>
 											<h4>HiveD: Multi-Tenant GPU Cluster Scheduling for Deep Learning (<i>OSDI '20</i>)</h4>
-											<h5>Jun. 2018 - Jun. 2020</h5>
-											<p>Traditional multi-tenant clusters reserve resource for each tenant in terms of <i>quota</i>, the <i>number</i> of GPUs, which implies a promised amount of available resource. This approach fails for deep learning workloads, where users require not only the number, but also the <i>affinity</i> of the GPUs, which quota cannot capture. It is possible, and will hurt user experience that a tenant with sufficient quota cannot run a single job due to affinity constraint, or run way slower than it deserves.<br />
-											HiveD <i>explicitly reserves GPU affinity</i> for tenants, and allocates GPUs dynamically with a proven <i>guarantee</i> that every tenant can always access the deserved affinity it owns, thereby providing guaranteed and predictable resource sharing experience.<br />
+											<h5>Jun. 2018 - Jul. 2020</h5>
+											<p>Traditional multi-tenant clusters reserve resource for each tenant in terms of <i>quota</i>, the <i>number</i> of GPUs, which implies a promised amount of available resource. This approach fails for deep learning workloads, where users require not only the number, but also the <i>affinity</i> of the GPUs, which quota cannot capture. It is possible, and will hurt user experience that a tenant with sufficient quota cannot run a single job due to affinity constraint, or runs way slower than it deserves.<br />
+											HiveD <i>explicitly reserves GPU affinity structure</i> for tenants, and allocates GPUs dynamically with a proven <i>guarantee</i> that every tenant can always access the deserved affinity it owns, thereby providing guaranteed and predictable resource sharing experience.<br />
 										    <i>The system has been deployed at Microsoft and <a href="https://github.com/microsoft/hivedscheduler" target="_blank">released open source (have a try!)</a>.</i></p>
 											<ul>
 												<!-- <li>Trace analysis of Microsoft clusters to reveal the problems of traditional quota reservation</li> -->
@@ -126,7 +126,7 @@
 										</article>
 										<article>
 											<h4>Training Data Scheduling for Deep Learning Clusters</h4>
-											<h5>Dec. 2019 - Jul. 2020 (<i>Research paper in preparation</i>)</h5>
+											<h5>Dec. 2019 - Present (<i>Ongoing, research paper in preparation</i>)</h5>
 											<p>Decoupled compute and storage is a common practice in cloud computing. However, due to the increasingly large datasets and high throughput, the limited and non-scalable bandwidth between the local training cluster and the remote storage cluster is becoming a bottleneck, limiting training performance and resource utilization.<br />
 											We address this challenge by <i>considering training data as a new dimension of resource scheduling explicitly</i>. We design a new caching policy that not only reduces remote data loading, but also connects training performance directly with data-related resources (i.e., cache and bandwidth) via a performance model. Enabled by this model, we perform a cache-bandwidth-job co-scheduling, to serve data efficiently to the jobs and thus to improve performance and utilization.</p>
 											<ul>
